@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.tree import DecisionTreeRegressor
@@ -7,23 +8,17 @@ from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import r2_score
 
+from sklearn.preprocessing import LabelEncoder
+
 dataset = pd.read_csv('archive/insurance.csv')
 
-import numpy as np
-np.random.seed(42)
-
-dataset["faixas_imc"] = pd.cut(dataset["imc"],
-                               bins=[0, 18.5, 24.9, 29.9, 34.9, 39.9, np.inf],
-                               labels=[1, 2, 3, 4, 5, 6])
-
-from sklearn.preprocessing import LabelEncoder
 label_encoder = LabelEncoder()
 
 dataset['genero_type'] = label_encoder.fit_transform(dataset['gênero'])
 dataset['fumante_type'] = label_encoder.fit_transform(dataset['fumante'])
 dataset['regiao_type'] = label_encoder.fit_transform(dataset['região'])
 
-dataset_tratado = dataset.drop(columns = [ "imc", "fumante", "região", "gênero"]).copy()
+dataset_tratado = dataset.drop(columns = [ "fumante", "região", "gênero"]).copy()
 
 X = dataset_tratado.drop(columns=['encargos'], axis=1)
 y = dataset_tratado['encargos']

@@ -5,3 +5,14 @@
 - Leonardo Miyagi - RM354517
 - Luiz Henriques Gonçalves Carneiro de Albuquerque - RM355821
 - Rafael Pivetta Balbuena - RM355824
+
+### Instalação e execução
+**Requisito: Python 3.11**
+
+Faça o checkout do projeto. No diretório do projeto rodar:
+
+````
+python3.11 -m venv env
+source env/bin/activate
+pip install -r requirements.txt
+````
