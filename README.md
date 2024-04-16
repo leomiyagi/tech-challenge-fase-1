@@ -13,6 +13,13 @@ Faça o checkout do projeto. No diretório do projeto rodar:
 
 ````
 python3.11 -m venv env
+
+#MAC OS
 source env/bin/activate
+
+#Windows
+cd env/Scripts
+activate.bat
+
 pip install -r requirements.txt
 ````
